@@ -1,0 +1,113 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: test -f index.html || { echo "index.html not found"; exit 1; }
+
+      - name: Validate CSS syntax
+        run: |
+          for file in css/*.css; do
+            echo "Checking $file..."
+            python3 -c "
+          import re, sys
+          with open('$file') as f:
+              css = f.read()
+          opens = css.count('{')
+          closes = css.count('}')
+          if opens != closes:
+              print(f'Mismatched braces: {opens} opening vs {closes} closing')
+              sys.exit(1)
+          print('OK')
+          "
+          done
+
+      - name: Validate JS syntax
+        run: |
+          for file in js/*.js; do
+            echo "Checking $file..."
+            node --check "$file"
+          done
+
+      - name: Validate HTML (unclosed tags)
+        run: |
+          for file in index.html blog/index.html blog/posts/*.html; do
+            echo "Checking $file..."
+            python3 -c "
+          from html.parser import HTMLParser
+          import sys
+
+          class Validator(HTMLParser):
+              VOID = {'area','base','br','col','embed','hr','img','input','link','meta','source','track','wbr'}
+              def __init__(self):
+                  super().__init__()
+                  self.stack = []
+                  self.errors = []
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() not in self.VOID:
+                      self.stack.append((tag.lower(), self.getpos()))
+              def handle_endtag(self, tag):
+                  tag = tag.lower()
+                  # Search stack from top for matching tag
+                  for i in range(len(self.stack) - 1, -1, -1):
+                      if self.stack[i][0] == tag:
+                          self.stack.pop(i)
+                          return
+                  self.errors.append(f'Line {self.getpos()[0]}: closing </{tag}> without opening tag')
+
+          with open('$file') as f:
+              content = f.read()
+          v = Validator()
+          v.feed(content)
+          for e in v.errors:
+              print(e)
+          # Check for unclosed tags (ignore html, head, body which browsers auto-close)
+          ignore = {'html','head','body'}
+          unclosed = [(t, pos) for t, pos in v.stack if t not in ignore]
+          for t, pos in unclosed:
+              print(f'Line {pos[0]}: <{t}> never closed')
+          if v.errors or unclosed:
+              sys.exit(1)
+          print('OK')
+          "
+          done
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
