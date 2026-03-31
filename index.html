@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arnaud Siebering — Portfolio Développeur</title>
+  <meta name="description" content="Portfolio d'Arnaud Siebering, développeur en formation. Projets concrets construits avec l'IA et les technologies web modernes.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://arnaudsiebering.fr/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arnaud Siebering — Portfolio Développeur">
+  <meta property="og:description" content="Développeur en formation. Projets concrets construits avec l'IA et les technologies web modernes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arnaudsiebering.fr/">
+  <meta property="og:image" content="https://arnaudsiebering.fr/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Critical CSS (above-the-fold) -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #0a0a0a; --color-text: #e0e0e0; --color-heading: #ffffff;
+      --color-border: #222222; --color-navbar-bg: rgba(10,10,10,0.8);
+      --font-heading: 'Playfair Display', serif;
+      --font-base: 'Noto Sans', sans-serif;
+    }
+    [data-theme="light"] {
+      --color-bg: #ffffff; --color-text: #1a1a1a; --color-heading: #111111;
+      --color-border: #dddddd; --color-navbar-bg: rgba(255,255,255,0.8);
+    }
+    body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-base); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 0;
+      background-color: var(--color-navbar-bg); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .skip-link { position: absolute; top: -100%; left: 1rem; padding: 0.5rem 1rem;
+      background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border);
+      z-index: 200; font-size: 0.85rem; }
+    .skip-link:focus { top: 0.5rem; }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <div class="container navbar__inner">
+      <a href="#hero" class="navbar__logo">Arnaud</a>
+      <button class="navbar__toggle" aria-label="Menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+      </button>
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Activer le thème clair">
+        <span class="theme-toggle__icon">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section id="hero">
+      <div class="container">
+        <h1>Arnaud Siebering</h1>
+        <p class="subtitle">Développeur en formation</p>
+        <p class="tagline">Je construis des projets concrets avec l'IA.</p>
+        <a href="#projects" class="btn-cta">Voir mes projets</a>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="fade-in">
+      <div class="container">
+        <h2>À propos</h2>
+        <div class="about__grid">
+          <div class="about__photo" role="img" aria-label="Photo d'Arnaud Siebering">
+            <span class="about__photo-label">Photo</span>
+          </div>
+          <div class="about__bio">
+            <p>Passionné par la technologie et l'intelligence artificielle, j'apprends à construire des projets concrets en utilisant les outils les plus avancés du marché. Ce portfolio est lui-même construit avec Claude Code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="fade-in">
+      <div class="container">
+        <h2>Mes Projets</h2>
+        <div class="projects__grid">
+
+          <article class="project-card">
+            <div class="project-card__accent"></div>
+            <h3 class="project-card__title">mon-portfolio</h3>
+            <p class="project-card__desc">Portfolio développeur construit avec Claude Code</p>
+            <a href="https://github.com/vitreriesiebering-web/mon-portfolio" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— mon-portfolio</span></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__accent"></div>
+            <h3 class="project-card__title">hello-python</h3>
+            <p class="project-card__desc">Premier script Python d'apprentissage</p>
+            <a href="https://github.com/vitreriesiebering-web/hello-python" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— hello-python</span></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__accent"></div>
+            <h3 class="project-card__title">notes-cli</h3>
+            <p class="project-card__desc">Outil en ligne de commande pour gérer des notes</p>
+            <a href="https://github.com/vitreriesiebering-web/notes-cli" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— notes-cli</span></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog (aperçu) -->
+    <section id="blog" class="fade-in">
+      <div class="container">
+        <h2>Blog</h2>
+        <div class="blog__grid">
+
+          <article class="blog-card">
+            <div class="blog-card__accent"></div>
+            <p class="blog-card__date"><time datetime="2026-03-27">27 mars 2026</time></p>
+            <h3 class="blog-card__title">Mon premier article</h3>
+            <p class="blog-card__excerpt">Comment j'ai construit ce portfolio de zéro avec Claude Code, et ce que j'ai appris en chemin.</p>
+            <a href="blog/posts/mon-premier-article.html" class="blog-card__link">Lire la suite <span class="sr-only">de l'article : Mon premier article</span></a>
+          </article>
+
+        </div>
+        <a href="blog/" class="btn-cta blog__see-all">Voir tous les articles</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="fade-in">
+      <div class="container">
+        <h2>Me contacter</h2>
+        <form class="contact-form" novalidate>
+          <p class="contact-form__required-hint">Les champs marqués d'un <span aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
+
+          <label for="contact-name">Nom <span aria-hidden="true">*</span></label>
+          <input type="text" id="contact-name" name="name" placeholder="Votre nom" required autocomplete="name" aria-describedby="contact-name-error">
+          <p class="contact-form__error" id="contact-name-error" role="alert"></p>
+
+          <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="contact-email" name="email" placeholder="votre@email.com" required autocomplete="email" aria-describedby="contact-email-error">
+          <p class="contact-form__error" id="contact-email-error" role="alert"></p>
+
+          <label for="contact-message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="contact-message" name="message" rows="5" placeholder="Votre message…" required aria-describedby="contact-message-error"></textarea>
+          <p class="contact-form__error" id="contact-message-error" role="alert"></p>
+
+          <button type="submit" class="btn-submit">Envoyer</button>
+          <p class="contact-form__success" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer__inner">
+      <p class="footer__links">
+        <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
+        <span class="footer__sep">·</span>
+        <a href="#" aria-hidden="true" tabindex="-1">LinkedIn</a>
+      </p>
+      <p class="footer__copy">© 2026 Arnaud Siebering</p>
+      <p class="footer__credit">Construit avec Claude Code</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

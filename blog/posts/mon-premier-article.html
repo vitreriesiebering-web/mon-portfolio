@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon premier article — Arnaud Siebering</title>
+  <meta name="description" content="Comment j'ai construit mon portfolio de zéro avec Claude Code, et ce que j'ai appris en chemin.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://arnaudsiebering.fr/blog/posts/mon-premier-article.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mon premier article — Arnaud Siebering">
+  <meta property="og:description" content="Comment j'ai construit mon portfolio de zéro avec Claude Code, et ce que j'ai appris en chemin.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arnaudsiebering.fr/blog/posts/mon-premier-article.html">
+  <meta property="og:image" content="https://arnaudsiebering.fr/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="article:published_time" content="2026-03-27">
+  <meta property="article:author" content="Arnaud Siebering">
+
+  <!-- Critical CSS -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #0a0a0a; --color-text: #e0e0e0; --color-heading: #ffffff;
+      --color-border: #222222; --color-navbar-bg: rgba(10,10,10,0.8);
+      --font-heading: 'Playfair Display', serif;
+      --font-base: 'Noto Sans', sans-serif;
+    }
+    [data-theme="light"] {
+      --color-bg: #ffffff; --color-text: #1a1a1a; --color-heading: #111111;
+      --color-border: #dddddd; --color-navbar-bg: rgba(255,255,255,0.8);
+    }
+    body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-base); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 0;
+      background-color: var(--color-navbar-bg); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .skip-link { position: absolute; top: -100%; left: 1rem; padding: 0.5rem 1rem;
+      background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border);
+      z-index: 200; font-size: 0.85rem; }
+    .skip-link:focus { top: 0.5rem; }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <div class="container navbar__inner">
+      <a href="../../index.html" class="navbar__logo">Arnaud</a>
+      <button class="navbar__toggle" aria-label="Menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+      </button>
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="../../index.html#about">À propos</a></li>
+        <li><a href="../../index.html#projects">Projets</a></li>
+        <li><a href="../" aria-current="page">Blog</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Activer le thème clair">
+        <span class="theme-toggle__icon">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <main id="main-content" class="article">
+    <div class="container">
+      <a href="../" class="article__back">← Retour au blog</a>
+
+      <article>
+        <h1>Mon premier article</h1>
+        <p class="article__date"><time datetime="2026-03-27">27 mars 2026</time></p>
+
+        <div class="article__content">
+          <p>Quand j'ai décidé de me lancer dans le développement, je ne savais pas par où commencer. Il y a tellement de langages, de frameworks, d'outils — c'est facile de se perdre. Alors j'ai choisi l'approche la plus directe : construire quelque chose de concret.</p>
+
+          <h2>Pourquoi un portfolio ?</h2>
+
+          <p>Un portfolio, c'est le projet parfait pour débuter. Il combine les bases du web — HTML pour la structure, CSS pour le style, JavaScript pour l'interactivité — dans un projet qui a un sens personnel. Ce n'est pas un exercice abstrait : c'est <em>ton</em> site, ta vitrine.</p>
+
+          <p>J'ai choisi de le construire sans framework, sans outil de build, juste avec les fondamentaux. L'idée était d'apprendre les bases avant de monter en complexité.</p>
+
+          <h2>Construire avec Claude Code</h2>
+
+          <p>Ce qui a rendu l'expérience unique, c'est l'utilisation de Claude Code comme partenaire de développement. Plutôt que de suivre un tutoriel pas à pas, j'ai pu :</p>
+
+          <ul>
+            <li>Décrire ce que je voulais en français, et obtenir du code fonctionnel</li>
+            <li>Comprendre chaque décision technique en posant des questions</li>
+            <li>Itérer rapidement sur le design et les fonctionnalités</li>
+            <li>Apprendre les bonnes pratiques (BEM, variables CSS, accessibilité) en contexte</li>
+          </ul>
+
+          <blockquote>Le meilleur moyen d'apprendre à coder, c'est de coder. Mais avoir un mentor disponible 24h/24 change tout.</blockquote>
+
+          <h2>Ce que j'ai appris</h2>
+
+          <p>En construisant ce portfolio, j'ai découvert les variables CSS, le responsive design avec les media queries, les animations avec <code>IntersectionObserver</code>, et la gestion de thème dark/light avec <code>localStorage</code>. Chaque fonctionnalité ajoutée m'a appris quelque chose de nouveau.</p>
+
+          <p>La prochaine étape ? Continuer à construire, article après article, projet après projet.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer__inner">
+      <p class="footer__links">
+        <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
+        <span class="footer__sep">·</span>
+        <a href="#" aria-hidden="true" tabindex="-1">LinkedIn</a>
+      </p>
+      <p class="footer__copy">© 2026 Arnaud Siebering</p>
+      <p class="footer__credit">Construit avec Claude Code</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>
