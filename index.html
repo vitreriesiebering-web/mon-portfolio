@@ -45,6 +45,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
+  <script>
+    (function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+
   <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
@@ -90,10 +94,15 @@
         <h2>À propos</h2>
         <div class="about__grid">
           <div class="about__photo" role="img" aria-label="Photo d'Arnaud Siebering">
-            <span class="about__photo-label">Photo</span>
+            <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="140" height="140" fill="var(--color-card-bg)"/>
+              <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-subheading)" font-size="48" font-weight="500" fill="var(--color-accent)">AS</text>
+            </svg>
           </div>
           <div class="about__bio">
-            <p>Passionné par la technologie et l'intelligence artificielle, j'apprends à construire des projets concrets en utilisant les outils les plus avancés du marché. Ce portfolio est lui-même construit avec Claude Code.</p>
+            <p>Passionné par la technologie et l'intelligence artificielle, j'apprends à construire des projets concrets en utilisant les outils les plus avancés du marché.</p>
+            <p>Curieux et autodidacte, je me forme au développement web, à Python et aux outils d'IA générative. Mon approche : apprendre en construisant, projet après projet.</p>
+            <p>Ce portfolio est lui-même construit avec Claude Code, de A à Z.</p>
           </div>
         </div>
       </div>
@@ -109,21 +118,21 @@
             <div class="project-card__accent"></div>
             <h3 class="project-card__title">mon-portfolio</h3>
             <p class="project-card__desc">Portfolio développeur construit avec Claude Code</p>
-            <a href="https://github.com/vitreriesiebering-web/mon-portfolio" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— mon-portfolio</span></a>
+            <a href="https://github.com/arnaudsiebering/mon-portfolio" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— mon-portfolio</span></a>
           </article>
 
           <article class="project-card">
             <div class="project-card__accent"></div>
             <h3 class="project-card__title">hello-python</h3>
             <p class="project-card__desc">Premier script Python d'apprentissage</p>
-            <a href="https://github.com/vitreriesiebering-web/hello-python" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— hello-python</span></a>
+            <a href="https://github.com/arnaudsiebering/hello-python" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— hello-python</span></a>
           </article>
 
           <article class="project-card">
             <div class="project-card__accent"></div>
             <h3 class="project-card__title">notes-cli</h3>
             <p class="project-card__desc">Outil en ligne de commande pour gérer des notes</p>
-            <a href="https://github.com/vitreriesiebering-web/notes-cli" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— notes-cli</span></a>
+            <a href="https://github.com/arnaudsiebering/notes-cli" class="project-card__link" target="_blank" rel="noopener noreferrer">Voir sur GitHub <span class="sr-only">— notes-cli</span></a>
           </article>
 
         </div>
@@ -153,7 +162,11 @@
     <section id="contact" class="fade-in">
       <div class="container">
         <h2>Me contacter</h2>
-        <form class="contact-form" novalidate>
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="0ac352fb-cde4-4263-8eb0-0e726443129c">
+          <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+          <input type="hidden" name="redirect" value="https://arnaudsiebering.fr/#contact">
+          <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
           <p class="contact-form__required-hint">Les champs marqués d'un <span aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
 
           <label for="contact-name">Nom <span aria-hidden="true">*</span></label>
@@ -181,8 +194,6 @@
     <div class="container footer__inner">
       <p class="footer__links">
         <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
-        <span class="footer__sep">·</span>
-        <a href="#" aria-hidden="true" tabindex="-1">LinkedIn</a>
       </p>
       <p class="footer__copy">© 2026 Arnaud Siebering</p>
       <p class="footer__credit">Construit avec Claude Code</p>

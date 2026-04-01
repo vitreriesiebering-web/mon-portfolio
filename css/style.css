@@ -195,7 +195,7 @@ h2 {
   font-weight: 500;
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
-  color: var(--color-disabled);
+  color: var(--color-secondary);
   margin-bottom: var(--space-base);
   padding-bottom: var(--space-md);
   position: relative;
@@ -446,16 +446,19 @@ section {
   justify-content: center;
 }
 
-.about__photo-label {
-  font-size: var(--fs-sm);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--color-disabled);
+.about__photo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .about__bio p {
   color: var(--color-secondary);
   line-height: var(--lh-loose);
+}
+
+.about__bio p + p {
+  margin-top: var(--space-base);
 }
 
 /* ========================================
@@ -503,23 +506,6 @@ section {
   color: var(--color-secondary);
   padding: var(--space-md) var(--space-lg) 0;
   flex-grow: 1;
-}
-
-.project-card__tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  padding: var(--space-base) var(--space-lg) 0;
-}
-
-.project-card__tags li {
-  font-size: var(--fs-xs);
-  letter-spacing: var(--ls-normal);
-  text-transform: uppercase;
-  color: var(--color-muted);
-  border: 1px solid var(--color-border);
-  padding: var(--space-xs) var(--space-sm);
 }
 
 .project-card__link {
@@ -620,6 +606,11 @@ section {
   color: var(--color-heading);
 }
 
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ========================================
    Footer
    ======================================== */
@@ -683,7 +674,7 @@ footer {
 
 .blog__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-xl);
   margin-top: var(--space-2xl);
 }
@@ -873,9 +864,6 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .blog__grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* --- Mobile (max-width: 480px) --- */

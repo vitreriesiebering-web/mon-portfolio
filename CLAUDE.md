@@ -45,7 +45,7 @@ Defined as CSS custom properties in `:root` (dark) and `[data-theme="light"]` (l
 | Primary text | `#e0e0e0` | `#1a1a1a` |
 | Headings | `#ffffff` | `#111111` |
 | Secondary text | `#aaaaaa` | `#444444` |
-| Muted text | `#888888` | `#666666` |
+| Muted text | `#a0a0a0` | `#666666` |
 | Accent | `#64ffda` | `#0d9373` |
 | Borders | `#222222` | `#dddddd` |
 | Card background | `#111111` | `#f5f5f5` |

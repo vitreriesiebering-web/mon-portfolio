@@ -47,6 +47,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
 
+  <script>
+    (function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+
   <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
@@ -120,8 +124,6 @@
     <div class="container footer__inner">
       <p class="footer__links">
         <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
-        <span class="footer__sep">·</span>
-        <a href="#" aria-hidden="true" tabindex="-1">LinkedIn</a>
       </p>
       <p class="footer__copy">© 2026 Arnaud Siebering</p>
       <p class="footer__credit">Construit avec Claude Code</p>

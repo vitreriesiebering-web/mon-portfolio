@@ -3,34 +3,36 @@
 const toggle = document.querySelector('.navbar__toggle');
 const menu   = document.querySelector('.navbar__menu');
 
-function closeMenu() {
-  toggle.classList.remove('is-open');
-  menu.classList.remove('is-open');
-  toggle.setAttribute('aria-expanded', 'false');
-}
-
-toggle.addEventListener('click', () => {
-  const open = toggle.classList.toggle('is-open');
-  menu.classList.toggle('is-open', open);
-  toggle.setAttribute('aria-expanded', String(open));
-});
-
-// Close menu when a link is tapped
-menu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
-
-// Close menu with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && menu.classList.contains('is-open')) {
-    closeMenu();
-    toggle.focus();
+if (toggle && menu) {
+  function closeMenu() {
+    toggle.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
   }
-});
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.classList.toggle('is-open');
+    menu.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close menu when a link is tapped
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+}
 
 // Theme toggle
 const themeToggle = document.querySelector('.theme-toggle');
-const themeIcon = themeToggle.querySelector('.theme-toggle__icon');
+const themeIcon = themeToggle ? themeToggle.querySelector('.theme-toggle__icon') : null;
 
 function getPreferredTheme() {
   const saved = localStorage.getItem('theme');
@@ -40,8 +42,8 @@ function getPreferredTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-  themeToggle.setAttribute('aria-label',
+  if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  if (themeToggle) themeToggle.setAttribute('aria-label',
     theme === 'dark' ? 'Activer le thème clair' : 'Activer le thème sombre'
   );
   localStorage.setItem('theme', theme);
@@ -49,10 +51,12 @@ function applyTheme(theme) {
 
 applyTheme(getPreferredTheme());
 
-themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  applyTheme(current === 'dark' ? 'light' : 'dark');
-});
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+}
 
 // Fade-in sections on scroll
 const observer = new IntersectionObserver(
@@ -95,7 +99,7 @@ if (contactForm) {
     });
   });
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const allValid = fields.map(f => validateField(f)).every(Boolean);
     if (!allValid) {
@@ -103,13 +107,39 @@ if (contactForm) {
       if (firstInvalid) firstInvalid.focus();
       return;
     }
+
+    const submitBtn = contactForm.querySelector('.btn-submit');
     const success = contactForm.querySelector('.contact-form__success');
-    success.textContent = 'Message envoyé avec succès !';
-    success.hidden = false;
-    contactForm.reset();
-    fields.forEach(f => {
-      document.getElementById(f.id).removeAttribute('aria-invalid');
-      document.getElementById(f.id + '-error').textContent = '';
-    });
+    success.hidden = true;
+    success.textContent = '';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi…';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm)
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        success.textContent = 'Message envoyé avec succès !';
+        success.hidden = false;
+        contactForm.reset();
+        fields.forEach(f => {
+          document.getElementById(f.id).removeAttribute('aria-invalid');
+          document.getElementById(f.id + '-error').textContent = '';
+        });
+      } else {
+        success.textContent = 'Une erreur est survenue. Réessayez ou contactez-moi par email.';
+        success.hidden = false;
+      }
+    } catch {
+      success.textContent = 'Une erreur est survenue. Réessayez ou contactez-moi par email.';
+      success.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer';
+    }
   });
 }
