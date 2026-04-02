@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les bases de CSS Grid — Arnaud Siebering</title>
+  <meta name="description" content="Comprendre CSS Grid en quelques minutes : les concepts essentiels pour créer des mises en page modernes sans se prendre la tête.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://arnaudsiebering.fr/blog/posts/les-bases-de-css-grid.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Les bases de CSS Grid — Arnaud Siebering">
+  <meta property="og:description" content="Comprendre CSS Grid en quelques minutes : les concepts essentiels pour créer des mises en page modernes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arnaudsiebering.fr/blog/posts/les-bases-de-css-grid.html">
+  <meta property="og:image" content="https://arnaudsiebering.fr/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="article:published_time" content="2026-03-29">
+  <meta property="article:author" content="Arnaud Siebering">
+
+  <!-- Critical CSS -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #0a0a0a; --color-text: #e0e0e0; --color-heading: #ffffff;
+      --color-border: #222222; --color-navbar-bg: rgba(10,10,10,0.8);
+      --font-heading: 'Playfair Display', serif;
+      --font-base: 'Noto Sans', sans-serif;
+    }
+    [data-theme="light"] {
+      --color-bg: #ffffff; --color-text: #1a1a1a; --color-heading: #111111;
+      --color-border: #dddddd; --color-navbar-bg: rgba(255,255,255,0.8);
+    }
+    body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-base); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 0;
+      background-color: var(--color-navbar-bg); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .skip-link { position: absolute; top: -100%; left: 1rem; padding: 0.5rem 1rem;
+      background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border);
+      z-index: 200; font-size: 0.85rem; }
+    .skip-link:focus { top: 0.5rem; }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <script>
+    (function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+
+  <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <div class="container navbar__inner">
+      <a href="../../index.html" class="navbar__logo">Arnaud</a>
+      <button class="navbar__toggle" aria-label="Menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+      </button>
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="../../index.html#about">À propos</a></li>
+        <li><a href="../../index.html#projects">Projets</a></li>
+        <li><a href="../" aria-current="page">Blog</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Activer le thème clair">
+        <span class="theme-toggle__icon">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <main id="main-content" class="article">
+    <div class="container">
+      <a href="../" class="article__back">← Retour au blog</a>
+
+      <article>
+        <h1>Les bases de CSS Grid</h1>
+        <p class="article__date"><time datetime="2026-03-29">29 mars 2026</time></p>
+
+        <div class="article__content">
+          <p>Quand j'ai commencé à vouloir organiser mes éléments sur une page, j'ai d'abord utilisé Flexbox pour tout. Ça marche bien pour des alignements simples, mais dès qu'on veut une vraie grille — comme des cartes de projets côte à côte — CSS Grid change la donne.</p>
+
+          <h2>Le concept en une phrase</h2>
+
+          <p>CSS Grid permet de découper un conteneur en lignes et colonnes, puis de placer les éléments enfants dans cette grille. C'est comme un tableau, mais en beaucoup plus flexible.</p>
+
+          <h2>Le minimum pour démarrer</h2>
+
+          <p>Trois propriétés suffisent pour créer une grille fonctionnelle :</p>
+
+          <ul>
+            <li><code>display: grid</code> — active le mode grille sur le conteneur</li>
+            <li><code>grid-template-columns</code> — définit le nombre et la taille des colonnes</li>
+            <li><code>gap</code> — espace entre les éléments</li>
+          </ul>
+
+          <p>Par exemple, pour afficher trois cartes de projets côte à côte :</p>
+
+          <blockquote>grid-template-columns: repeat(3, 1fr) crée trois colonnes de taille égale. C'est la ligne que j'utilise le plus souvent.</blockquote>
+
+          <h2>Grid vs Flexbox</h2>
+
+          <p>La règle simple que j'applique : Flexbox pour les alignements en une dimension (une ligne ou une colonne), Grid pour les mises en page en deux dimensions (lignes <em>et</em> colonnes). Dans ce portfolio, les cartes de projets utilisent Grid, tandis que la navbar utilise Flexbox.</p>
+
+          <h2>Ce que j'ai retenu</h2>
+
+          <p>CSS Grid n'est pas compliqué une fois qu'on comprend le modèle mental : un conteneur divisé en cellules. Pas besoin de maîtriser toutes les propriétés au départ — <code>grid-template-columns</code>, <code>gap</code> et <code>repeat()</code> couvrent 80 % des cas.</p>
+
+          <p>Le meilleur conseil : ouvrir les DevTools du navigateur, activer l'affichage de la grille, et expérimenter.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer__inner">
+      <p class="footer__links">
+        <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
+      </p>
+      <p class="footer__copy">© 2026 Arnaud Siebering</p>
+      <p class="footer__credit">Construit avec Claude Code</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

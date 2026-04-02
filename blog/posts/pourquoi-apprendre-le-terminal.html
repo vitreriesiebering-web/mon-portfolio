@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pourquoi apprendre le terminal — Arnaud Siebering</title>
+  <meta name="description" content="Le terminal fait peur au début, mais c'est l'outil qui m'a fait le plus progresser. Voici pourquoi ça vaut le coup de s'y mettre.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://arnaudsiebering.fr/blog/posts/pourquoi-apprendre-le-terminal.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pourquoi apprendre le terminal — Arnaud Siebering">
+  <meta property="og:description" content="Le terminal fait peur au début, mais c'est l'outil qui m'a fait le plus progresser.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arnaudsiebering.fr/blog/posts/pourquoi-apprendre-le-terminal.html">
+  <meta property="og:image" content="https://arnaudsiebering.fr/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="article:published_time" content="2026-03-31">
+  <meta property="article:author" content="Arnaud Siebering">
+
+  <!-- Critical CSS -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #0a0a0a; --color-text: #e0e0e0; --color-heading: #ffffff;
+      --color-border: #222222; --color-navbar-bg: rgba(10,10,10,0.8);
+      --font-heading: 'Playfair Display', serif;
+      --font-base: 'Noto Sans', sans-serif;
+    }
+    [data-theme="light"] {
+      --color-bg: #ffffff; --color-text: #1a1a1a; --color-heading: #111111;
+      --color-border: #dddddd; --color-navbar-bg: rgba(255,255,255,0.8);
+    }
+    body { background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-base); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 0;
+      background-color: var(--color-navbar-bg); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .skip-link { position: absolute; top: -100%; left: 1rem; padding: 0.5rem 1rem;
+      background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border);
+      z-index: 200; font-size: 0.85rem; }
+    .skip-link:focus { top: 0.5rem; }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <script>
+    (function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+
+  <noscript><style>.fade-in { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <div class="container navbar__inner">
+      <a href="../../index.html" class="navbar__logo">Arnaud</a>
+      <button class="navbar__toggle" aria-label="Menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+        <span class="navbar__bar"></span>
+      </button>
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a href="../../index.html#about">À propos</a></li>
+        <li><a href="../../index.html#projects">Projets</a></li>
+        <li><a href="../" aria-current="page">Blog</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Activer le thème clair">
+        <span class="theme-toggle__icon">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <main id="main-content" class="article">
+    <div class="container">
+      <a href="../" class="article__back">← Retour au blog</a>
+
+      <article>
+        <h1>Pourquoi apprendre le terminal</h1>
+        <p class="article__date"><time datetime="2026-03-31">31 mars 2026</time></p>
+
+        <div class="article__content">
+          <p>Avant de toucher au terminal, je faisais tout avec des interfaces graphiques. Créer un dossier ? Clic droit, nouveau dossier. Renommer un fichier ? Double-clic. Ça marche, mais c'est lent — et surtout, ça ne scale pas.</p>
+
+          <h2>Le déclic</h2>
+
+          <p>Mon déclic est venu avec Git. Impossible de vraiment comprendre Git sans passer par la ligne de commande. Les interfaces graphiques cachent trop de choses. Quand j'ai tapé mon premier <code>git init</code> suivi d'un <code>git commit</code>, j'ai compris ce qui se passait réellement sous le capot.</p>
+
+          <h2>Les commandes qui changent tout</h2>
+
+          <p>Pas besoin de tout apprendre d'un coup. Ces commandes couvrent déjà beaucoup de terrain :</p>
+
+          <ul>
+            <li><code>cd</code>, <code>ls</code>, <code>mkdir</code> — naviguer et organiser ses fichiers</li>
+            <li><code>git add</code>, <code>git commit</code>, <code>git push</code> — versionner son code</li>
+            <li><code>python3 -m http.server</code> — lancer un serveur local en une ligne</li>
+            <li><code>cat</code>, <code>grep</code> — lire et chercher dans des fichiers</li>
+          </ul>
+
+          <h2>Le terminal et l'IA</h2>
+
+          <p>Ce qui est intéressant aujourd'hui, c'est que le terminal est aussi l'interface naturelle pour travailler avec des outils d'IA comme Claude Code. On tape une instruction, on obtient un résultat. C'est direct, rapide, et ça force à formuler clairement ce qu'on veut.</p>
+
+          <blockquote>Le terminal ne pardonne pas l'approximation, et c'est exactement ce qui en fait un bon professeur.</blockquote>
+
+          <h2>Conseils pour débuter</h2>
+
+          <p>Ne pas essayer de tout mémoriser. Utiliser le terminal pour des tâches concrètes — créer un projet, commiter du code, lancer un serveur — et chercher les commandes au fur et à mesure. La mémoire musculaire vient avec la pratique, pas avec les flashcards.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer__inner">
+      <p class="footer__links">
+        <a href="https://github.com/arnaudsiebering" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(nouvelle fenêtre)</span></a>
+      </p>
+      <p class="footer__copy">© 2026 Arnaud Siebering</p>
+      <p class="footer__credit">Construit avec Claude Code</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>
